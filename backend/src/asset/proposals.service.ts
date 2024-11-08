@@ -45,11 +45,12 @@ export class ProposalService {
       throw new BadRequestException('Please provide at least one filter: either category or investmentRange.');
     }
 
-    let filteredProposals = this.proposals;
+    let filteredProposals: any = {};
 
     if (category) {
       filteredProposals = filteredProposals.filter(proposal =>
         proposal.category.toLowerCase() === category.toLowerCase()
+        
       );
     }
 
@@ -64,21 +65,21 @@ export class ProposalService {
   }
 
   // Method to get detailed information about a proposal
-  async getProposalsDetails(assetDetailsDto: ProposalsDetailsDto) {
-    let { assetId } = assetDetailsDto;
+  async getProposalsDetails(ProposalsDetailsDto: ProposalsDetailsDto) {
+    let { userId } = ProposalsDetailsDto;
 
     // Ensure assetId is a valid number
-    if (typeof assetId === 'string') {
-      assetId = parseInt(assetId, 10);
+    if (typeof userId === 'string') {
+      userId = parseInt(userId, 10);
     }
 
-    if (!assetId || isNaN(assetId)) {
+    if (!userId || isNaN(userId)) {
       throw new BadRequestException('Invalid Asset ID');
     }
 
     try {
       const asset = await this.dataservice.asset.findUnique({
-        where: { id: assetId },
+        where: { id: userId },
         include: { images: true },
       });
 
