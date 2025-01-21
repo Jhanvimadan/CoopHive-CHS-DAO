@@ -15,7 +15,7 @@ Welcome to **CoopHive**, a decentralized platform designed for cooperative housi
 **CoopHive** was developed as part of the **Timechain Summer of Code 2024 Sprint**. It empowers cooperative housing societies to manage funds transparently and engage in secure asset and proposal management via blockchain technology.
 
 ## Tech Stack
-- **Frontend**: Svelte
+- **Frontend**: Sveltekit
 - **Backend**: NestJS, Prisma, PostgreSQL
 - **Tools**: Postman, Swagger
 
